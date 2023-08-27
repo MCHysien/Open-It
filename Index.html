@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Jasa</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: #00FF00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #birthday-message {
+            font-size: 64px; /* Increased font size */
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+            animation: neon-flicker 1s infinite alternate;
+        }
+
+        @keyframes neon-flicker {
+            0% {
+                text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+            }
+            100% {
+                text-shadow: 0 0 20px #00FF00, 0 0 30px #00FF00, 0 0 40px #00FF00;
+            }
+        }
+
+        #countdown {
+            font-size: 32px; /* Increased font size */
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: none;
+        }
+        
+        /* Additional text styles */
+        h1 {
+            font-size: 15px; /* Reduced font size */
+            color: white; /* White color */
+        }
+    </style>
+</head>
+<body>
+    <div id="birthday-message">Happy Birthday Jasa!</div>
+    <div id="countdown">Countdown to Jasa's next birthday:<br><span id="countdown-timer"></span></div>
+    <h1>HINDI KO MAKA KALIMUTAN BDAY MO HAHA</h1>
+
+    <script>
+        // Set the date of Jasa's next birthday (YYYY-MM-DD)
+        const nextBirthdayDate = new Date('2024-08-26T00:00:00');
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeDifference = nextBirthdayDate - currentDate;
+
+            if (timeDifference <= 0) {
+                document.getElementById('countdown-timer').textContent = "It's today!";
+            } else {
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown-timer').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial update
+        updateCountdown();
+    </script>
+</body>
+</html>
